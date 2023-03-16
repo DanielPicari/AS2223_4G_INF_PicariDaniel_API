@@ -24,5 +24,18 @@ namespace AS2223_4G_INF_PicariDaniel_API.Controllers
             }
             return Json(new {output=numero,risultato=risultato,status=status});
         }
+        [HttpGet("Fattoriale")]
+        public JsonResult Fattoriale(int numero)
+        {
+            string status="ok";
+            int risultato=1;
+            for(int i = numero; i > 0; i--)
+            {
+                risultato = risultato * i;
+                
+            }
+
+            return Json(new { output = numero , risultato = risultato , status=status});
+        }
     }
 }
