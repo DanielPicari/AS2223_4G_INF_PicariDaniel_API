@@ -37,5 +37,27 @@ namespace AS2223_4G_INF_PicariDaniel_API.Controllers
 
             return Json(new { output = numero , risultato = risultato , status=status});
         }
+        [HttpGet("Reddito")]
+        public JsonResult reddito(int reddito)
+        {
+            int tassa=0;
+            int rimanente=0;
+            string status;
+            if(reddito < 35000)
+            {
+                tassa = (reddito * 12) / 100;
+                status = "ok";
+                rimanente = reddito - tassa;
+
+            }
+            else
+            {
+                tassa = (reddito * 28) / 100;
+                status = "ko";
+                rimanente = reddito - tassa;
+            }
+
+            return Json(new { output = reddito, tassa=tassa,rimanente=rimanente, status = status });
+        }
     }
 }
